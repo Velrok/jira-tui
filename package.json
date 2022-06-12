@@ -1,0 +1,40 @@
+{
+  "name": "jira-tui",
+  "version": "1.0.0",
+  "description": "A simple text ui for Jira.",
+  "main": "./app/cli.js",
+  "bin": {
+    "jira-tui": "./app/cli.js"
+  },
+  "scripts": {
+    "main": "./app/cli.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Velrok/jira-tui.git"
+  },
+  "keywords": [
+    "jira",
+    "tui",
+    "cli"
+  ],
+  "author": "Waldemar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Velrok/jira-tui/issues"
+  },
+  "homepage": "https://github.com/Velrok/jira-tui#readme",
+  "dependencies": {
+    "import-jsx": "^4.0.1",
+    "ink": "^3.2.0",
+    "jira.js": "^2.13.0",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.30",
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  }
+}
