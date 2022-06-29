@@ -1,23 +1,39 @@
 const React = require("react");
 const { useState, useEffect } = require("react");
-const { render, Text } = require("ink");
+const { render, Text, Box, useApp, useInput } = require("ink");
 
-const example_project_key = "Ne5DCLO07RXWi4L2cSBX2F00";
+const { getTickets } = require("./jira");
 
-const Counter = () => {
-  const [counter, setCounter] = useState(0);
+const AppTitle = () => <Text>Jira</Text>;
+
+const App = () => {
+  const { exit } = useApp();
+  const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCounter((previousCounter) => previousCounter + 1);
-    }, 100);
-
-    return () => {
-      clearInterval(timer);
-    };
+    getTickets().then((tickets) => {
+      console.log(tickets);
+      setTickets(tickets);
+    });
   }, []);
 
-  return <Text color="green">{counter} tests passed</Text>;
+  useInput((input, _key) => {
+    input === "q" && exit();
+    // input === "j" && focusNext();
+    // input === "k" && focusPrevious();
+    // input === "/" && focus(SEARCH_FOCUS_ID);
+  });
+
+  return (
+    <Box flexDirection="row" height={"100%"} flexGrow={1} borderStyle="single">
+      <AppTitle></AppTitle>
+      <Box>
+        {tickets.map((ticket, idx) => (
+          <Text key={`ticket-list-${idx}`}>{ticket}</Text>
+        ))}
+      </Box>
+    </Box>
+  );
 };
 
-render(<Counter />);
+render(<App />);
