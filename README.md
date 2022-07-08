@@ -10,7 +10,7 @@ Proofe of concept
 
 ### Read only view
 
-- [ ] Auth
+- [x] Auth
 - [ ] Show basic board
 - [ ] Make a column component
 - [ ] Load board columns
